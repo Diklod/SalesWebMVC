@@ -87,14 +87,6 @@ namespace SalesWebMvc.Data
             );
             _context.SaveChanges();
             _context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT SalesRecord OFF");
-
-            //_context.Seller.insertAll()
-
-            //_context.Database.OpenConnection();
-            //_context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Department ON");
-            //_context.SaveChanges();
-            //_context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Department OFF");
-            //_context.Database.CloseConnection();
         }
     }
 }
