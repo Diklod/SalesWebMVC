@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore.Internal;
 using SalesWebMvc.Models;
 using SalesWebMvc.Models.Enums;
 using System;
-using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace SalesWebMvc.Data
 {
