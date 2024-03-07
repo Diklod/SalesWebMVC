@@ -35,3 +35,11 @@ body {
         display: none;
     }
 }
+
+.mb-5{
+    margin-bottom: 20px;
+}
+
+mt-5{
+    margin-top: 30px;
+}
