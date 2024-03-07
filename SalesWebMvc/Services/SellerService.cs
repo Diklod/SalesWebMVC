@@ -24,7 +24,7 @@ namespace SalesWebMvc.Services
         public async Task InsertAsync(Seller obj)
         {
             _context.Add(obj);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         public async Task<Seller> FindByIdAsync(int id)
@@ -34,9 +34,23 @@ namespace SalesWebMvc.Services
 
         public async Task RemoveAsync(int id)
         {
-            var obj = await _context.Seller.FindAsync(id);
-            _context.Seller.Remove(obj);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var obj = await _context.Seller.FindAsync(id);
+                _context.Seller.Remove(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                var obj = await _context.Seller.FindAsync(id);
+                char sChecker = obj.Nome.ToCharArray().Last();
+                string s = "'s";
+                if (sChecker == 's')
+                {
+                    s = "'";
+                }
+                throw new IntegrityException("Couldn't delete. There are sales in " + obj.Nome + s + " name.");
+            }
         }
 
         public async Task UpdateAsync(Seller obj)
